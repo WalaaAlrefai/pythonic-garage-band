@@ -1,16 +1,33 @@
+class Musician: 
+    '''
+    base class to handle common functionality which particular kinds of musicians will inherit.
+    inherits name attributes for all child classes
+    
+'''
+    def __init__(self, name):
+        self.name = name
+
+
 class Band:
+    '''
+       Band class to create instances that have name,members attributes
+       also each instance will have a play_solo method that asks each member musician to play a solo
+       each instance should have  __str__ and __repr__ methods.
+       and this Band class have a class method to_list which returns a list of previously created Band instances
+    '''
     instances = []
 
     def __init__(self, name, members=None):
         self.name = name
         self.members = members
-        Band.instances.append(self.name)
+        Band.instances.append(self)
 
     def __str__(self):
         return f"The band {self.name}"
-
+        pass
     def __repr__(self):
-        return f"Band instance. name={self.name}, members={self.members}"
+        return f'The Band instance, {self.name}'
+       
 
     def play_solos(self):
         return list(map(lambda member: member.play_solo(), self.members))
@@ -20,15 +37,14 @@ class Band:
         return cls.instances
 
 
-class Musician: 
-    '''
-    base class to handle common functionality which particular kinds of musicians will inherit.
-'''
-    def __init__(self, name):
-        self.name = name
-
 
 class Guitarist(Musician):
+    '''
+    Musician instance should have  __str__ and __repr__ methods.
+    get_instrument method that returns string.
+    a play_solo method that returns string.
+    '''
+    
     def __str__(self):
         return f"My name is {self.name} and I play guitar"
 
@@ -45,6 +61,12 @@ class Guitarist(Musician):
 
 
 class Bassist(Musician):
+    '''
+    Musician instance should have  __str__ and __repr__ methods.
+    get_instrument method that returns string.
+    a play_solo method that returns string.
+    '''
+
     def __str__(self):
         return f"My name is {self.name} and I play bass"
 
@@ -61,6 +83,12 @@ class Bassist(Musician):
 
 
 class Drummer(Musician):
+    '''
+    Musician instance should have  __str__ and __repr__ methods.
+    get_instrument method that returns string.
+    a play_solo method that returns string.
+    '''
+
     def __str__(self):
         return f"My name is {self.name} and I play drums"
 
@@ -77,3 +105,14 @@ class Drummer(Musician):
     
 
 
+__name__=="__main__"  
+
+g1=Guitarist("tamim")
+print(g1)
+print(g1.play_solo())
+print(g1.get_instrument())
+print(g1.__repr__())
+g2=Band("julia")
+g3=Band("Mohammed")
+print(g2.to_list())
+print(g2)
